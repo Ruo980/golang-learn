@@ -5,59 +5,41 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"golang-learn/leetcode/array/function"
+	"os"
 	"strconv"
-	"strings"
 )
 
-func getArray(input string) []int {
-	fmt.Println(input)
-	nums := make([]int, 20)
-	values := strings.Split(input, ",")
-	for i, v := range values {
-		num, _ := strconv.Atoi(strings.TrimSpace(v))
-		nums[i] = num
-	}
-	fmt.Println("dede")
-	for i := 0; i < len(nums); i++ {
-		fmt.Println(nums[i])
-		fmt.Println("a")
-	}
-	return nums
-}
-
 func main() {
+	fmt.Println("欢迎进入leetcode 数组类刷题：")
+	for {
+		fmt.Println("请输入题号进行相关程序演示 (按0退出)：")
+		// 输入题号
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		input := scanner.Text()
+		questionNumber, err := strconv.Atoi(input)
+		if err != nil {
+			fmt.Println("输入的题号无效，请重新输入！")
+			continue
+		}
 
-	// twoSum：输入数组和target，查询两数之和为target的角标
-	/*	fmt.Println("请输入数组值：")
-		var input string
-		fmt.Scanln(&input)
-		nums := getArray(input)
-		fmt.Println("开始‘两数之和’函数")
-		fmt.Print("请输入target值：")
-		var target int
-		fmt.Scanf("%d", &target)
-		fmt.Println(target)
+		if questionNumber == 0 {
+			break
+		}
 
-		result := function.TwoSum(nums, target)
-		for i := 0; i < len(result); i++ {
-			fmt.Print(result[i])
-			fmt.Print(" ")
-		}*/
+		switch questionNumber {
+		case 1:
+			function.Exec1() // 执行题目编号为1的程序
+		case 4:
+			function.Exec4()
+		default:
+			fmt.Println("未找到对应的题号，请重新输入！")
+		}
 
-	fmt.Println()
-	// findMedianSortedArrays：合并两个数组找中间数
-	fmt.Println("开始‘两有序数组找中间数’函数")
-	fmt.Println("请输入数组1的值")
-	var input1 string
-	fmt.Scanln(&input1)
-	nums1 := getArray(input1)
-
-	fmt.Println("请输入数组2的值")
-	var input2 string
-	fmt.Scanln(&input2)
-	nums2 := getArray(input2)
-	result2 := function.FindMedianSortedArrays(nums1, nums2)
-	fmt.Println(result2)
+		// 清空输入缓冲区
+		scanner.Scan()
+	}
 }
