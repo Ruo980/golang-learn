@@ -53,7 +53,9 @@ func Exec1() {
 	fmt.Print("请输入target值：")
 	var target int
 	fmt.Scanf("%d", &target)
-
+	// 清空输入缓冲区
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
 	// ==执行算法
 	result := twoSum(nums, target)
 

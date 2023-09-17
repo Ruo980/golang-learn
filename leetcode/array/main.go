@@ -7,9 +7,11 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"golang-learn/leetcode/array/function"
+	"golang-learn/leetcode/array/function/utils"
 	"os"
 	"strconv"
+
+	"golang-learn/leetcode/array/function"
 )
 
 func main() {
@@ -32,14 +34,14 @@ func main() {
 
 		switch questionNumber {
 		case 1:
-			function.Exec1() // 执行题目编号为1的程序
+			function.Exec1() // 执行题目编号为 1 的程序
 		case 4:
-			function.Exec4()
+			function.Exec4() // 执行题目编号为 4 的程序
+		case 11:
+			function.Exec11() //执行题目编号为 11 的程序
 		default:
-			fmt.Println("未找到对应的题号，请重新输入！")
+			utils.PrintName("未找到对应的题号，请重新输入！")
 		}
 
-		// 清空输入缓冲区
-		scanner.Scan()
 	}
 }
