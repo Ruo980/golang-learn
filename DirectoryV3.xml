@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <trees>
+     <tree path="/fmt_learn" title="fmt包的学习"/>
+     <tree path="/goroutine_learn" title="goroutine学习"/>
+     <tree path="/leetcode" title="leetcode算法训练"/>
+     <tree path="/leetcode/array" title="数组专题训练"/>
+     <tree path="/type_of_data" title="数据类型学习"/>
+ </trees>
