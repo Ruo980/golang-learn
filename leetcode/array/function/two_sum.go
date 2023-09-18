@@ -31,17 +31,6 @@ func twoSum(nums []int, target int) []int {
 	return nil
 }
 
-// 碰撞指针解法
-func twoSum2(nums []int, target int) []int {
-	result := make([]int, 2)
-	result[0] = 3
-	result[1] = 2
-	for i := 0; i < len(result); i++ {
-		fmt.Println(result)
-	}
-	return result
-}
-
 // twoSum：输入数组和target，查询两数之和为target的角标
 func Exec1() {
 	// 填充式输出题目名称

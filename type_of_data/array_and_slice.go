@@ -25,6 +25,7 @@ func main() {
 	for i := 0; i < len(b); i++ {
 		b[i] = i + 3
 	}
+	b = append(b, 6) //实现追加
 	for index, value := range b {
 		fmt.Println(index, value)
 	}
