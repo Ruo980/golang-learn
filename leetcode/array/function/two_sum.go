@@ -8,8 +8,9 @@ package function
 import (
 	"bufio"
 	"fmt"
-	"golang-learn/leetcode/array/function/utils"
 	"os"
+
+	"golang-learn/leetcode/array/function/utils"
 )
 
 // 给定一个数组和target。在数组中找到两个数，它们之和为target。这个数组中符合条件的两数对仅一个

@@ -3,8 +3,9 @@ package function
 import (
 	"bufio"
 	"fmt"
-	"golang-learn/leetcode/array/function/utils"
 	"os"
+
+	"golang-learn/leetcode/array/function/utils"
 )
 
 // maxAreaMe

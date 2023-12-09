@@ -45,6 +45,31 @@ func threeSum(nums []int) [][]int {
 	return result
 }
 
+func threeSum2(nums []int) [][]int {
+	result := make([][]int, 0)
+	sort.Ints(nums)
+	for i := 0; i < len(nums)-1; i++ {
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		j := i + 1
+		k := len(nums) - 1
+		for j < k {
+			if nums[i]+nums[j]+nums[k] == 0 {
+				result = append(result, []int{nums[i], nums[j], nums[k]})
+				k--
+			}
+			for nums[i]+nums[j]+nums[k] > 0 && j < k {
+				k--
+			}
+			for nums[i]+nums[j]+nums[k] < 0 && j < k {
+				j++
+			}
+		}
+	}
+	return result
+}
+
 // Exec15
 //
 //	@Description: 执行 15.三数之和 题目程序
@@ -66,7 +91,7 @@ func Exec15() {
 	// 清空输入缓冲区
 	reader.Discard(reader.Buffered())
 	fmt.Println("开始‘三数之和’函数")
-	result := threeSum(nums)
+	result := threeSum2(nums)
 	fmt.Println("结果为：")
 	fmt.Println(result)
 	utils.PrintName("‘三数之和’程序结束")

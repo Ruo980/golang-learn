@@ -2,11 +2,11 @@
 // @Author: FunCoder
 // @Create: 2023-09-01 22:37
 // @Description:
-package main
+package learn
 
 import "fmt"
 
-func main() {
+func Variable() {
 	s1 := fmt.Sprint("枯藤")
 	name := "枯藤"
 	age := 18
