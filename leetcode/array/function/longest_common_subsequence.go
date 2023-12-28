@@ -35,7 +35,7 @@ func longestCommonSubsequence(text1 string, text2 string) int {
 	return D[len(text1)][len(text2)]
 }
 
-func Exec95() {
+func Exec1143() {
 	// 填充式输出题目名称
 	title := "longestCommonSubsequence"
 	utils.PrintName(title)
