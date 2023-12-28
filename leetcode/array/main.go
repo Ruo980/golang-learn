@@ -51,6 +51,10 @@ func main() {
 			function.Exec389() // 执行题目编号为 389 的程序
 		case 674:
 			function.Exec674() // 执行题目编号为 674 的程序
+		case 1480:
+			function.Exec1480() // 执行题目编号为 1480 的程序
+		case 1342:
+			function.Exec1342() // 执行题目编号为 1342 的程序
 		default:
 			utils.PrintName("未找到对应的题号，请重新输入！")
 		}
