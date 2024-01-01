@@ -47,6 +47,8 @@ func main() {
 			function.Exec53() // 执行题目编号为 53 的程序
 		case 389:
 			function.Exec389() // 执行题目编号为 389 的程序
+		case 402:
+			function.Exec402() // 执行题目编号为 402 的程序
 		case 455:
 			function.Exec455() // 执行题目编号为 455 的程序
 		case 674:
