@@ -8,20 +8,17 @@ import (
 )
 
 func removeDuplicates(nums []int) int {
-	if len(nums) == 1 {
-		return 1
-	} else {
-		i := 1 //i为快指针
-		j := 0 //j为慢指针
-		for i < len(nums) {
-			if nums[i] > nums[j] {
-				j++ // 待插入的索引位置
-				nums[j] = nums[i]
-			}
-			i++
+	// 既然是快指针和慢指针的值比较，无论第一个元素如何都应该加入到新数组中，因此j:=0,i:1
+	i := 1 //i为快指针
+	j := 0 //j为慢指针
+	for i < len(nums) {
+		if nums[i] > nums[j] {
+			j++ // 待插入的索引位置
+			nums[j] = nums[i]
 		}
-		return j + 1
+		i++
 	}
+	return j + 1
 }
 
 func Exec26() {
