@@ -5,15 +5,25 @@ import (
 	"fmt"
 	"golang-learn/leetcode/array/function/utils"
 	"os"
-	"sort"
 )
 
 func sortedSquares(nums []int) []int {
-	for i := 0; i < len(nums); i++ {
-		nums[i] = nums[i] * nums[i]
+	length := len(nums)
+	i := 0
+	j := length - 1
+	t := length - 1
+	res := make([]int, length)
+	for i <= j {
+		if nums[i]*nums[i] > nums[j]*nums[j] {
+			res[t] = nums[i] * nums[i]
+			i++
+		} else {
+			res[t] = nums[j] * nums[j]
+			j--
+		}
+		t--
 	}
-	sort.Ints(nums)
-	return nums
+	return res
 }
 
 func Exec977() {
