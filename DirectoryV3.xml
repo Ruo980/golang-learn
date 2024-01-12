@@ -7,4 +7,5 @@
      <tree path="/type_of_data" title="数据类型学习"/>
      <tree path="/fmt_learn/print_learn.go" title="占位符探究"/>
      <tree path="/fmt_learn/fmt_learn.go" title="字符串填充"/>
+     <tree path="/leetcode/list" title="链表专题训练"/>
  </trees>
