@@ -12,12 +12,11 @@ func removeDuplicates3(s string, k int) string {
 	str := []byte(s)
 
 	nums := make([]int, len(str))
-	t := 0 // 当前栈顶的长度
+	t := -1 // 当前栈顶的长度
 
 	// 起始情况下：栈顶元素为str[0],长度为1,待插入元素为str[1]
-	i := 0 // i为慢指针,表示栈顶
-	j := 1 // j为快指针,表示当前待插入的元素
-	nums[t] = 1
+	i := -1 // i为慢指针,表示栈顶
+	j := 0  // j为快指针,表示当前待插入的元素
 
 	// 开始插入元素
 	for j < len(str) {
@@ -57,12 +56,24 @@ func Exec1209() {
 	// 读取一行输入并丢弃
 	reader := bufio.NewReader(os.Stdin)
 	// 清空输入缓冲区
-	reader.Discard(reader.Buffered())
-	fmt.Scanln(&s)
+	_, err := reader.Discard(reader.Buffered())
+	if err != nil {
+		return
+	}
+	_, err = fmt.Scanln(&s)
+	if err != nil {
+		return
+	}
 	// 清空输入缓冲区
-	reader.Discard(reader.Buffered())
+	_, err = reader.Discard(reader.Buffered())
+	if err != nil {
+		return
+	}
 	fmt.Println("请输入整数k：")
-	fmt.Scanln(&k)
+	_, err = fmt.Scanln(&k)
+	if err != nil {
+		return
+	}
 	fmt.Println("开始‘删除字符串中的所有相邻重复项 II’函数")
 	str := removeDuplicates3(s, k)
 	fmt.Println("删除字符串中的所有相邻重复项 II后的字符串为：", str)
