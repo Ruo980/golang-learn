@@ -8,25 +8,40 @@ import (
 )
 
 func removeDuplicates3(s string, k int) string {
-	var strStack []byte
-	var countStack []int
-	strStack = append(strStack, s[0])
-	countStack = append(countStack, 1)
+	// 字符串转换为数组：表示栈和待插入序列
+	str := []byte(s)
 
-	for i := 1; i < len(s); i++ {
-		if len(strStack) > 0 && s[i] == strStack[len(strStack)-1] {
-			countStack[len(countStack)-1]++
+	nums := make([]int, len(str))
+	t := 0 // 当前栈顶的长度
+
+	// 起始情况下：栈顶元素为str[0],长度为1,待插入元素为str[1]
+	i := 0 // i为慢指针,表示栈顶
+	j := 1 // j为快指针,表示当前待插入的元素
+	nums[t] = 1
+
+	// 开始插入元素
+	for j < len(str) {
+		// 判断当前元素是否与栈顶元素相同
+		if i != -1 && str[i] == str[j] {
+			// 判断当前的长度是否超过k-1:如果超过k-1，则将栈顶k-1个元素移除;否则将栈顶元素的长度加1
+			if nums[t] == k-1 {
+				i = i - k + 1
+				t-- // 上一个不同与栈顶元素的元素积累的长度
+			} else {
+				i++
+				str[i] = str[j]
+				nums[t]++
+			}
 		} else {
-			countStack = append(countStack, 1)
+			// 如果当前元素与栈顶元素不同，则将当前元素加入到栈中
+			i++
+			str[i] = str[j]
+			t++
+			nums[t] = 1
 		}
-		strStack = append(strStack, s[i])
-
-		if countStack[len(countStack)-1] == k {
-			strStack = strStack[0 : len(strStack)-k]
-			countStack = countStack[0 : len(countStack)-1]
-		}
+		j++
 	}
-	return string(strStack)
+	return string(str[:i+1])
 }
 
 func Exec1209() {
