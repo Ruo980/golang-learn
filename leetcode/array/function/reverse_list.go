@@ -34,7 +34,10 @@ func Exec206() {
 	// 接收参数
 	var str string
 	fmt.Println("请输入链表：")
-	fmt.Scanln(&str)
+	_, err := fmt.Scanln(&str)
+	if err != nil {
+		return
+	}
 	//转换为链表
 	head := utils.GetList(str)
 	// 执行算法
