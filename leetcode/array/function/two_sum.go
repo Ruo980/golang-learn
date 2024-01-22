@@ -13,59 +13,58 @@ import (
 	"golang-learn/leetcode/array/function/utils"
 )
 
-// 给定一个数组和target。在数组中找到两个数，它们之和为target。这个数组中符合条件的两数对仅一个
+// twoSum
+//
+//	@Description: 两数之和
+//	@param nums
+//	@param target
+//	@return []int
 func twoSum(nums []int, target int) []int {
-	// 利用map 离散存放值的特点
-	m := make(map[int]int)
+	m := make(map[int]int, len(nums))
 	for i := 0; i < len(nums); i++ {
-		another := target - nums[i]
-		if _, ok := m[another]; ok {
-			// 找到对应存放的another返回
-			return []int{i, m[another]}
-		} else {
-			//如果没找到对应的值，就把现在的值存起来
-			m[nums[i]] = i
+		if m[target-nums[i]] != 0 {
+			return []int{m[target-nums[i]] - 1, i}
 		}
+		m[nums[i]] = i + 1
 	}
-
-	// 遍历结束仍未找到，返回nil
 	return nil
 }
 
-// twoSum：输入数组和target，查询两数之和为target的角标
 func Exec1() {
 	// 填充式输出题目名称
-	title := "Two Sum"
+	title := "两数之和"
 	utils.PrintName(title)
 
 	//===开始输入相关参数
 	// 执行输入操作
-	fmt.Println("请输入数组值：")
-	var input string
+	var nums []int
+	var str string
+	var target int
+	fmt.Println("请输入数组nums：")
 	// 读取一行输入并丢弃
 	reader := bufio.NewReader(os.Stdin)
 	// 清空输入缓冲区
-	reader.Discard(reader.Buffered())
-	fmt.Scanln(&input)
-	nums := utils.GetArray(input)
-	// 清空输入缓冲区
-	reader.Discard(reader.Buffered())
-	fmt.Println("开始‘两数之和’函数")
-	fmt.Print("请输入target值：")
-	var target int
-	fmt.Scanf("%d", &target)
-	// 清空输入缓冲区
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	// ==执行算法
-	result := twoSum(nums, target)
-
-	// ==输出结果
-	fmt.Println("结果如下：")
-	for i := 0; i < len(result); i++ {
-		fmt.Print(result[i])
-		fmt.Print(" ")
+	_, err3 := reader.Discard(reader.Buffered())
+	if err3 != nil {
+		return
 	}
-	fmt.Println()
-	utils.PrintName("”两数之和“程序结束")
+	_, err2 := fmt.Scanln(&str)
+	if err2 != nil {
+		return
+	}
+	nums = utils.GetArray(str)
+	fmt.Println("请输入target：")
+	_, err := fmt.Scanln(&target)
+	if err != nil {
+		return
+	}
+	// 清空输入缓冲区
+	_, err3 = reader.Discard(reader.Buffered())
+	if err3 != nil {
+		return
+	}
+	fmt.Println("开始‘两数之和’函数")
+	result := twoSum(nums, target)
+	fmt.Println("结果为：", result)
+	utils.PrintName("‘两数之和’程序结束")
 }
