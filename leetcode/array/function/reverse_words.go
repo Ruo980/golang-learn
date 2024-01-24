@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"golang-learn/leetcode/array/function/utils"
 	"os"
+	"strings"
 )
 
 func reverseWords(s string) string {
-	fmt.Println(s)
 	str := []rune(s)
 	i := len(str) - 1
 	j := 0
@@ -28,12 +28,8 @@ func reverseWords(s string) string {
 		j--
 	}
 	str = str[i : j+1]
-	// 遍历
-	for i := 0; i < len(str); i++ {
-		fmt.Println(str[i])
-	}
 	// 反转单词，去除中间多余空格
-	i = 0
+	i = 0  // 单词终点
 	j = 0  // 单词起点
 	k := 0 // 新的数组
 	// 增加一个尾部空格：使得最后一个单词反转和其他单词一样
@@ -55,13 +51,14 @@ func reverseWords(s string) string {
 				k++
 				j++
 			}
-			// 单词起点
-			j = i + 1
+			// j指向下一个单词的起点
+			for j < len(str) && str[j] == ' ' {
+				j++
+			}
 		}
 		i++
 	}
-	// 去除尾部空格
-	return string(str[:k])
+	return string(str[:k-1])
 }
 
 func Exec151() {
@@ -71,28 +68,24 @@ func Exec151() {
 
 	// 接收参数
 	var str string
-	fmt.Println("请输入字符串：")
-	// 读取一行输入并丢弃
-	reader := bufio.NewReader(os.Stdin)
-	// 清空输入缓冲区
-	_, err := reader.Discard(reader.Buffered())
-	if err != nil {
-		return
-	}
-	_, err1 := fmt.Scanln(&str)
-	if err1 != nil {
-		return
-	}
-	// 清空输入缓冲区
-	_, err2 := reader.Discard(reader.Buffered())
-	if err2 != nil {
-		return
-	}
+	fmt.Println("请输入字符串:")
 
+	// 读取一行输入
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("读取输入失败:", err)
+		return
+	}
+	// Windows下输入的字符串是\r\n结尾
+	// 去除换行符
+	str = strings.TrimRight(input, "\n")
+	// 去除回车符
+	str = strings.TrimRight(str, "\r")
 	// 执行算法
 	result := reverseWords(str)
 	// 打印结果
-	fmt.Println("翻转后的字符串为：", result)
+	fmt.Println("翻转后的字符串为:", result)
 	//算法结束
 	utils.PrintName("‘翻转字符串里的单词’程序结束")
 }
